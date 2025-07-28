@@ -45,6 +45,10 @@ interface ParticipationStats {
 
 export const InaugurationEvent: React.FC<InaugurationEventProps> = ({ onBack }) => {
   const { user } = useAuth()
+  
+  // Control flag to enable/disable daily raffle
+  const IS_DAILY_RAFFLE_ENABLED = false // Set to 'true' to re-enable
+  
   const [loading, setLoading] = useState(true)
   const [participating, setParticipating] = useState(false)
   const [winners, setWinners] = useState<Winner[]>([])
@@ -56,7 +60,7 @@ export const InaugurationEvent: React.FC<InaugurationEventProps> = ({ onBack }) 
     userEntries: 1
   })
   const [showSuccessModal, setShowSuccessModal] = useState(false)
-  const [activeEventTab, setActiveEventTab] = useState<'tasks' | 'raffle'>('tasks')
+  const [activeEventTab, setActiveEventTab] = useState<'tasks' | 'raffle'>(IS_DAILY_RAFFLE_ENABLED ? 'raffle' : 'tasks')
 
   // Event dates - 21 a 31 de julho de 2025
   const eventStartDate = new Date(2025, 6, 21) // Julho é mês 6 (0-indexed)
@@ -273,26 +277,28 @@ export const InaugurationEvent: React.FC<InaugurationEventProps> = ({ onBack }) 
                 <span>Tarefas Diárias</span>
               </div>
             </button>
-            <button
-              onClick={() => setActiveEventTab('raffle')}
-              className={`flex-1 py-4 px-6 text-center font-semibold transition-colors ${
-                activeEventTab === 'raffle'
-                  ? 'bg-white text-purple-600 border-b-2 border-purple-600'
-                  : 'text-gray-600 hover:text-gray-800'
-              }`}
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <Gift className="w-5 h-5" />
-                <span>Sorteio Diário</span>
-              </div>
-            </button>
+            {IS_DAILY_RAFFLE_ENABLED && (
+              <button
+                onClick={() => setActiveEventTab('raffle')}
+                className={`flex-1 py-4 px-6 text-center font-semibold transition-colors ${
+                  activeEventTab === 'raffle'
+                    ? 'bg-white text-purple-600 border-b-2 border-purple-600'
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <div className="flex items-center justify-center space-x-2">
+                  <Gift className="w-5 h-5" />
+                  <span>Sorteio Diário</span>
+                </div>
+              </button>
+            )}
           </div>
 
           {/* Tab Content */}
           <div className="p-6">
             {activeEventTab === 'tasks' ? (
               <DailyTasks />
-            ) : (
+            ) : IS_DAILY_RAFFLE_ENABLED ? (
               <div className="space-y-6 bg-gray-900 -m-6 p-6 rounded-lg">
                 {/* Hero Section */}
                 <div className="text-center px-6 mb-8">
@@ -727,6 +733,16 @@ export const InaugurationEvent: React.FC<InaugurationEventProps> = ({ onBack }) 
             </div>
           </div>
         </motion.div>
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Gift className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Sorteio Temporariamente Desativado</h3>
+                <p className="text-gray-600">
+                  O sorteio diário está temporariamente indisponível. Volte em breve!
+                </p>
               </div>
             )}
           </div>
