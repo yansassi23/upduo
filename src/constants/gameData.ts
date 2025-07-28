@@ -22,26 +22,43 @@ export const LINES = [
 ]
 
 export const getHeroImageUrl = (heroName: string) => {
-  // Handle specific cases with exact URLs you provided
+  // Padroniza o nome do herói para corresponder ao formato do arquivo.
+  // Substitui espaços, apóstrofos, hífens e pontos por underscores.
+  // Remove quaisquer outros caracteres que não sejam alfanuméricos ou underscores.
+  let standardizedHeroName = heroName
+    .replace(/[\s'-.]/g, '_') // Substitui espaços, apóstrofos, hífens e pontos por underscores
+    .replace(/[^a-zA-Z0-9_]/g, ''); // Remove quaisquer outros caracteres não alfanuméricos ou underscores
+
+  // Casos específicos que já estão padronizados ou têm exceções
   switch (heroName) {
     case 'Lapu-Lapu':
-      return 'https://upduo.top/img/hero/Lapu_lapu.webp'
+      standardizedHeroName = 'Lapu_lapu';
+      break;
     case 'Luo Yi':
-      return 'https://upduo.top/img/hero/Luo_Yi.webp'
+      standardizedHeroName = 'Luo_Yi';
+      break;
     case 'Paquito':
-      return 'https://upduo.top/img/hero/Paquito.webp'
+      standardizedHeroName = 'Paquito';
+      break;
     case 'Popol and Kupa':
-      return 'https://upduo.top/img/hero/Popol_and_kupa.webp'
+      standardizedHeroName = 'Popol_and_kupa';
+      break;
     case 'X.Borg':
-      return 'https://upduo.top/img/hero/X_Borg.webp'
+      standardizedHeroName = 'X_Borg';
+      break;
     case 'Yi Sun-shin':
-      return 'https://upduo.top/img/hero/Yi_Sun_shin.webp'
+      standardizedHeroName = 'Yi_Sun_shin';
+      break;
     case 'Yu Zhong':
-      return 'https://upduo.top/img/hero/Yu_zhong.webp'
-    default:
-      // Default behavior for all other heroes
-      return `https://upduo.top/img/hero/${heroName}.webp`
+      standardizedHeroName = 'Yu_zhong';
+      break;
+    // Adicione outros casos específicos se necessário, por exemplo:
+    // case 'Chang\'e':
+    //   standardizedHeroName = 'Chang_e';
+    //   break;
   }
+
+  return `https://upduo.top/img/hero/${standardizedHeroName}.webp`;
 }
 
 export const getRankImageUrl = (rank: string) => {
