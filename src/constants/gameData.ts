@@ -25,22 +25,22 @@ export const getHeroImageUrl = (heroName: string) => {
   // Handle specific cases with exact URLs you provided
   switch (heroName) {
     case 'Lapu-Lapu':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Lapu_lapu.webp'
+      return 'https://upduo.top/img/hero/Lapu_lapu.webp'
     case 'Luo Yi':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Luo_Yi.webp'
+      return 'https://upduo.top/img/hero/Luo_Yi.webp'
     case 'Paquito':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Paquito.webp'
+      return 'https://upduo.top/img/hero/Paquito.webp'
     case 'Popol and Kupa':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Popol_and_kupa.webp'
+      return 'https://upduo.top/img/hero/Popol_and_kupa.webp'
     case 'X.Borg':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/X_Borg.webp'
+      return 'https://upduo.top/img/hero/X_Borg.webp'
     case 'Yi Sun-shin':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Yi_Sun_shin.webp'
+      return 'https://upduo.top/img/hero/Yi_Sun_shin.webp'
     case 'Yu Zhong':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/Yu_zhong.webp'
+      return 'https://upduo.top/img/hero/Yu_zhong.webp'
     default:
       // Default behavior for all other heroes
-      return `https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imghero/${heroName}.webp`
+      return `https://upduo.top/img/hero/${heroName}.webp`
   }
 }
 
@@ -48,23 +48,23 @@ export const getRankImageUrl = (rank: string) => {
   // Handle specific cases with exact URLs you provided
   switch (rank) {
     case 'Warrior':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgelo/warrior.webp'
+      return 'https://upduo.top/img/rank/warrior.webp'
     case 'Mythic':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgelo/mythic.webp'
+      return 'https://upduo.top/img/rank/mythic.webp'
     case 'Mythical Glory':
-      return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgelo/mythical_glory.webp'
+      return 'https://upduo.top/img/rank/mythical_glory.webp'
     default:
       // Default behavior for all other ranks
-      return `https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgelo/${rank}.webp`
+      return `https://upduo.top/img/rank/${rank}.webp`
   }
 }
 
 export const getLineImageUrl = (line: string) => {
   // Handle specific case with exact URL you provided
   if (line === 'roam') {
-    return 'https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgline/Roam.webp'
+    return 'https://upduo.top/img/line/Roam.webp'
   }
   
   // Default behavior for all other lines
-  return `https://dleovjfidkqozocszllj.supabase.co/storage/v1/object/public/imgline/${line}.webp`
+  return `https://upduo.top/img/line/${line}.webp`
 }
